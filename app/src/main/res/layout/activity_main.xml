@@ -33,15 +33,32 @@
            android:hint="Email/Mobile"
            android:layout_marginTop="@dimen/size_10"
            />
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/edtPassword"
+       <RelativeLayout
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:padding="@dimen/size_10"
            android:layout_marginTop="@dimen/size_20"
-           android:inputType="textPassword"
-           android:hint="Password"
-           />
+           android:layout_height="wrap_content">
+           <com.google.android.material.textfield.TextInputEditText
+               android:id="@+id/edtPassword"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="@dimen/size_10"
+               android:inputType="textPassword"
+               android:hint="Password"
+               />
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/imgPasswordStatus"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+               android:layout_alignParentRight="true"
+               android:layout_marginTop="@dimen/size_20"
+               android:layout_marginEnd="@dimen/size_20"
+               android:layout_marginRight="@dimen/size_20"
+               android:layout_centerVertical="true"
+               android:src="@drawable/ic_visibility_black_24dp" />
+
+       </RelativeLayout>
+
 
        <com.google.android.material.button.MaterialButton
            android:id="@+id/btnLogin"

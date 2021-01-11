@@ -11,9 +11,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.mudhales.haqdarshak.data.UserData;
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtUserName, edtPassword;
     private LocalDatabase database;
     private Button btnLogin;
+    private boolean isViewPass = false;
+    private ImageView imgPasswordStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edtUserName = findViewById(R.id.edtUserName);
         edtPassword = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        imgPasswordStatus = findViewById(R.id.imgPasswordStatus);
+        imgPasswordStatus.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         findViewById(R.id.btnRegister).setOnClickListener(this);
 
@@ -57,6 +64,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnRegister:
                 startActivity(new Intent(this,SignUpActivity.class));
                 break;
+            case R.id.imgPasswordStatus:
+                visibilityPassword();
+                break;
+        }
+    }
+    private void visibilityPassword(){
+        if (isViewPass) {
+            isViewPass = false;
+            // hide password
+            edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            imgPasswordStatus.setImageResource(R.drawable.ic_visibility_black_24dp);
+        } else {
+            isViewPass = true;
+            // show password
+            edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            imgPasswordStatus.setImageResource(R.drawable.ic_visibility_off_black_24dp);
+
         }
     }
     private void checkLogin() {
