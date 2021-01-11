@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Screen elements generic dimens-->
+    <dimen name="elementMarginUltraSmall">3dp</dimen>
+    <dimen name="elementMarginSmall">6dp</dimen>
+    <dimen name="elementMarginMedium">16dp</dimen>
+    <dimen name="elementPaddingSmall">8dp</dimen>
+    <dimen name="elementPaddingMedium">15dp</dimen>
+    <dimen name="elementPaddingLarge">20dp</dimen>
+    <dimen name="statusViewHeight">100dp</dimen>
+
+
+    <!--Text Sizes-->
+    <dimen name="textSizeLarge">20sp</dimen>
+    <dimen name="textSizeMedium">16sp</dimen>
+    <dimen name="textSizeSmall">14sp</dimen>
+    <dimen name="textSizeUltraSmall">12sp</dimen>
+    <dimen name="textSizeNanoSmall">10sp</dimen>
+
+
+    <dimen name="size_1">1dp</dimen>
+    <dimen name="size_2">2dp</dimen>
+    <dimen name="size_4">4dp</dimen>
+    <dimen name="size_5">5dp</dimen>
+    <dimen name="size_8">8dp</dimen>
+    <dimen name="size_10">10dp</dimen>
+    <dimen name="size_20">20dp</dimen>
+    <dimen name="size_24">24dp</dimen>
+    <dimen name="size_30">30dp</dimen>
+    <dimen name="size_40">40dp</dimen>
+    <dimen name="size_50">50dp</dimen>
+    <dimen name="size_60">60dp</dimen>
+    <dimen name="size_70">70dp</dimen>
+    <dimen name="size_100">100dp</dimen>
+    <dimen name="size_120">120dp</dimen>
+    <dimen name="size_32">32dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>
