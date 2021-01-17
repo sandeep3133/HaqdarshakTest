@@ -19,7 +19,7 @@ import com.mudhales.haqdarshak.ui.HomeFragment;
 import com.mudhales.haqdarshak.utils.SharedPreferenceManager;
 import com.mudhales.haqdarshak.utils.Utils;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
     BroadcastReceiver broadcastReceiver;
     private View view;
     @Override
@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         //super.onBackPressed();
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.screenContainer);
         if (fragment instanceof HomeFragment)
-            finish();
+            super.onBackPressed();
         else
             getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new HomeFragment()).commit();
     }

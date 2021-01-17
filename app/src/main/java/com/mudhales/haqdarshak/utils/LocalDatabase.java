@@ -108,12 +108,16 @@ public class LocalDatabase extends SQLiteOpenHelper {
     public synchronized ArrayList<UserData> getUserRecord(String username) {
         ArrayList<UserData> list = new ArrayList<>();
         // Select All Query
-        String selectQuery = "SELECT * FROM " + TABLE_RECORD_LIST
-                + " WHERE " + COLUMN_EMAIL + " = " + username
-                + " OR "+ COLUMN_MOBILE + " = '" + username + "'";
+//        String selectQuery = "SELECT * FROM " + TABLE_RECORD_LIST
+//                + " WHERE " + COLUMN_EMAIL + " = " + username
+//                + " OR "+ COLUMN_MOBILE + " = '" + username + "'";
+        // Select All Query
+        String selectQuery = "SELECT * FROM "+TABLE_RECORD_LIST +" WHERE "+COLUMN_EMAIL +"= ? OR "+COLUMN_MOBILE +"= ? ";
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        // Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = null;
         try {
+            cursor = db.rawQuery(selectQuery, new String[]{username, username});
             // looping through all rows and adding to list
             if (cursor.moveToFirst()) {
                 do {
@@ -154,16 +158,15 @@ public class LocalDatabase extends SQLiteOpenHelper {
         UserData data = null;
         String selectQuery;
         // Select All Query
-        if (username.contains("@"))
-        selectQuery = "SELECT * FROM " + TABLE_RECORD_LIST
-                + " WHERE " + COLUMN_EMAIL + " = " + username
-                + " AND "+ COLUMN_PASSWORD + " = '" + password + "'";
-        else selectQuery = "SELECT * FROM " + TABLE_RECORD_LIST
-                + " WHERE " + COLUMN_MOBILE + " = " + username
-                + " AND "+ COLUMN_PASSWORD + " = '" + password + "'";
+        if (username.contains("@")){
+            selectQuery = "SELECT * FROM "+TABLE_RECORD_LIST +" WHERE "+COLUMN_EMAIL +"= ? AND "+COLUMN_PASSWORD +"= ? ";
+        }
+        else selectQuery = "SELECT * FROM "+TABLE_RECORD_LIST +" WHERE "+COLUMN_MOBILE +"= ? AND "+COLUMN_PASSWORD +"= ? ";
+
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = null;
         try {
+            cursor = db.rawQuery(selectQuery, new String[]{username, password});
             // looping through all rows and adding to list
             if (cursor.moveToFirst()) {
                 do {

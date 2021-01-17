@@ -76,28 +76,29 @@ public class SharedPreferenceManager {
         editor.putBoolean(Constant.SharedPreferences.IS_USER_LOGGED_IN, false);
         editor.remove(Constant.SharedPreferences.LOGGED_IN_USER);
         editor.commit();
-        mContext.startActivity(new Intent(mContext, MainActivity.class));
+        mContext.startActivity(new Intent(mContext, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
 
-    public int loginCount() {
+    public long loginCount() {
         int json = sharedPreferences.getInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, 0);
         return json;
     }
 
     public void setLoginCount(boolean value) {
         if (value) {
-            int json = sharedPreferences.getInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, 0);
-            json = json + 1;
-            editor.putInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, json);
+            int count = sharedPreferences.getInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, 0);
+            count = count + 1;
+            editor.putInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, count);
+            if (count>2) setLoginBlockTime();
         } else
             editor.putInt(Constant.SharedPreferences.INVALID_LOGIN_COUNT, 0);
         editor.commit();
     }
     public long getLoginBlockTime() {
-        return sharedPreferences.getLong(Constant.SharedPreferences.INVALID_LOGIN_COUNT, 0);
+        return sharedPreferences.getLong(Constant.SharedPreferences.IS_BLOCKED_TIME, 0);
     }
     public void setLoginBlockTime() {
-        editor.putLong(Constant.SharedPreferences.IS_BLOCKED_TIME, System.currentTimeMillis());
+        editor.putLong(Constant.SharedPreferences.IS_BLOCKED_TIME, System.currentTimeMillis()+300000);
         editor.commit();
     }
 
